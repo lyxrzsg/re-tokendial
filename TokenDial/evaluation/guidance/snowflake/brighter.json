@@ -1,0 +1,19 @@
+{
+    "direction_prompts": [
+      "bright snowflakes",
+      "very bright snowflakes",
+      "snowflakes with bright color",
+      "snowflakes with high brightness"
+    ],
+    "neg_direction_prompts": [
+      "dim snowflakes",
+      "very dim snowflakes",
+      "snowflakes with dark color",
+      "snowflakes with low brightness"
+    ],
+    "base_prompts": [
+      "snowflakes",
+      "falling snowflakes",
+      "snowfall"
+    ]
+  }

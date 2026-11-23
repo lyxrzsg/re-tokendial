@@ -1,0 +1,11 @@
+{
+    "direction_prompts": [
+      "curly hair person"
+    ],
+    "neg_direction_prompts": [
+      "straight hair person"
+    ],
+    "base_prompts": [
+      "person"
+    ]
+  }

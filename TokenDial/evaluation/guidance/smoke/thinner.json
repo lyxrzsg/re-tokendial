@@ -1,0 +1,19 @@
+{
+    "direction_prompts": [
+      "thin smoke",
+      "very thin smoke",
+      "very light smoke",
+      "faint smoke"
+    ],
+    "neg_direction_prompts": [
+      "thick smoke",
+      "very thick smoke",
+      "very dense smoke",
+      "heavy smoke"
+    ],
+    "base_prompts": [
+      "smoke",
+      "smoke plume",
+      "smoke in the air"
+    ]
+  }

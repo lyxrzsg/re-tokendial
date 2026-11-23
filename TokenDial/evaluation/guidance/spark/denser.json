@@ -1,0 +1,17 @@
+{
+    "direction_prompts": [
+      "very dense sparks",
+      "a lot of sparks flying",
+      "a dense shower of sparks"
+    ],
+    "neg_direction_prompts": [
+      "very sparse sparks",
+      "only a few sparks",
+      "rare sparks"
+    ],
+    "base_prompts": [
+      "a video of sparks",
+      "a video of flying sparks",
+      "a video of a shower of sparks"
+    ]
+  }

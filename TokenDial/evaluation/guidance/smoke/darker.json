@@ -1,0 +1,18 @@
+{
+    "direction_prompts": [
+      "dark smoke",
+      "very dark smoke",
+      "smoke with darker color"
+    ],
+    "neg_direction_prompts": [
+      "light smoke",
+      "very light smoke",
+      "smoke with lighter color",
+      "white smoke"
+    ],
+    "base_prompts": [
+      "smoke",
+      "smoke plume",
+      "smoke in the air"
+    ]
+  }

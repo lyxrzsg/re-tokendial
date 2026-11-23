@@ -1,0 +1,19 @@
+{
+    "direction_prompts": [
+      "ink spreading fast",
+      "ink spreading quickly",
+      "fast ink diffusion",
+      "ink cloud expanding fast"
+    ],
+    "neg_direction_prompts": [
+      "ink spreading slowly",
+      "slow ink diffusion",
+      "ink spreading steady",
+      "ink cloud expanding slowly"
+    ],
+    "base_prompts": [
+      "ink spreading",
+      "ink in water",
+      "ink cloud"
+    ]
+  }

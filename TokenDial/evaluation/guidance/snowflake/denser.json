@@ -1,0 +1,19 @@
+{
+    "direction_prompts": [
+      "dense snowfall",
+      "very dense snowfall",
+      "heavy snowfall",
+      "many snowflakes"
+    ],
+    "neg_direction_prompts": [
+      "sparse snowfall",
+      "very light snowfall",
+      "few snowflakes",
+      "thin snowfall"
+    ],
+    "base_prompts": [
+      "snowfall",
+      "snowflakes falling",
+      "falling snow"
+    ]
+  }

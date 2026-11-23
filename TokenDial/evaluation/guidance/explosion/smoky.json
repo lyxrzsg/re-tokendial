@@ -1,0 +1,19 @@
+{
+    "direction_prompts": [
+      "fire explosion with more smoke",
+      "fire explosion with a lot of smoke",
+      "fire explosion with very heavy smoke",
+      "fire explosion with very thick smoke"
+    ],
+    "neg_direction_prompts": [
+      "fire explosion with no smoke",
+      "fire explosion with little smoke",
+      "fire explosion with light smoke",
+      "fire explosion with thin smoke"
+    ],
+    "base_prompts": [
+      "fire explosion",
+      "fireball explosion",
+      "explosion with fire"
+    ]
+  }

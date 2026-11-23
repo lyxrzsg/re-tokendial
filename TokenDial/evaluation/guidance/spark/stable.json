@@ -1,0 +1,19 @@
+{
+    "direction_prompts": [
+      "stable sparks",
+      "very stable sparks",
+      "sparks moving steadily",
+      "sparks with stable motion"
+    ],
+    "neg_direction_prompts": [
+      "chaotic sparks",
+      "very chaotic sparks",
+      "sparks moving chaotically",
+      "sparks with chaotic motion"
+    ],
+    "base_prompts": [
+      "sparks",
+      "flying sparks",
+      "sparks in the air"
+    ]
+  }

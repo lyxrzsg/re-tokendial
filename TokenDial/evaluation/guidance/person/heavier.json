@@ -1,0 +1,21 @@
+{
+    "direction_prompts": [
+      "very fat person",
+      "very heavy person",
+      "fat people",
+      "overweight people",
+      "overweight person"
+    ],
+    "neg_direction_prompts": [
+      "very thin person",
+      "very light person",
+      "thin people",
+      "underweight people",
+      "underweight person"
+    ],
+    "base_prompts": [
+      "a video of a person",
+      "a video of a human",
+      "a video of a human being"
+    ]
+  }

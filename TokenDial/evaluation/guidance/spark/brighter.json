@@ -1,0 +1,18 @@
+{
+    "direction_prompts": [
+      "bright sparks",
+      "very bright sparks",
+      "sparks with bright color",
+      "sparks with high brightness"
+    ],
+    "neg_direction_prompts": [
+      "dim sparks",
+      "very dim sparks",
+      "sparks with dark color"
+    ],
+    "base_prompts": [
+      "sparks",
+      "flying sparks",
+      "glowing sparks"
+    ]
+  }

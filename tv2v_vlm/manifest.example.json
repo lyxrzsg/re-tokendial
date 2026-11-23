@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "samples": [
+    {
+      "concept": "campfire",
+      "attribute": "brighter firelight",
+      "method": "example_method",
+      "sample": "campfire_001",
+      "source_video": "videos/campfire_001/source.mp4",
+      "zero_is_source_copy": false,
+      "clips": [
+        {"intensity": -4, "video": "videos/campfire_001/scale_-4.mp4", "prompt": "Make the firelight much dimmer."},
+        {"intensity": -2, "video": "videos/campfire_001/scale_-2.mp4", "prompt": "Make the firelight slightly dimmer."},
+        {"intensity": 0, "video": "videos/campfire_001/scale_0.mp4", "prompt": "Keep the original firelight."},
+        {"intensity": 2, "video": "videos/campfire_001/scale_2.mp4", "prompt": "Make the firelight slightly brighter."},
+        {"intensity": 4, "video": "videos/campfire_001/scale_4.mp4", "prompt": "Make the firelight much brighter."}
+      ]
+    }
+  ]
+}

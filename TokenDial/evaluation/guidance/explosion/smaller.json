@@ -1,0 +1,19 @@
+{
+    "direction_prompts": [
+      "small fire explosion",
+      "very small fire explosion",
+      "tiny fire explosion",
+      "little fire explosion"
+    ],
+    "neg_direction_prompts": [
+      "large fire explosion",
+      "very large fire explosion",
+      "big fire explosion",
+      "huge fire explosion"
+    ],
+    "base_prompts": [
+      "fire explosion",
+      "explosion with fire",
+      "fireball explosion"
+    ]
+  }

@@ -1,0 +1,5 @@
+{
+    "direction_prompts": ["blue campfire"],
+    "neg_direction_prompts": ["campfire"],
+    "base_prompts": ["campfire"]
+}

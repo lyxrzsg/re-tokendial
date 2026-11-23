@@ -1,0 +1,15 @@
+{
+    "direction_prompts": [
+      "very small campfire",
+      "extremely small campfire",
+      "very tiny campfire",
+      "extremely tiny campfire"
+    ],
+    "neg_direction_prompts": [
+      "very large campfire",
+      "extremely large campfire",
+      "very big campfire",
+      "extremely big campfire"
+    ],
+    "base_prompts": ["a video of a campfire", "a video of a campfire burning", "a video of a campfire with flames"]
+  }

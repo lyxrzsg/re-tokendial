@@ -1,0 +1,273 @@
+{
+  "source": {
+    "paper": "https://arxiv.org/pdf/2603.27520v2",
+    "repository": "https://github.com/ariannaliu/TokenDial",
+    "commit": "711d6b7749b29aeb9e307a65012daf9d5d495ce0"
+  },
+  "training": {
+    "backbone": "Wan-AI/Wan2.1-T2V-1.3B",
+    "optimizer": "AdamW",
+    "learning_rate": 1e-05,
+    "optimizer_updates": 300,
+    "weight_decay": 0.01,
+    "width": 320,
+    "height": 176,
+    "supervision_frames": 32,
+    "wan_input_frames": 33,
+    "fps": 24,
+    "appearance_lpips_weight": 0.5,
+    "motion_firstframe_weight": 5,
+    "posterior_additional_steps": 4,
+    "posterior_sigma_threshold": 0.75,
+    "motion_gamma": 0.5,
+    "seed": 260327520,
+    "motion_feature": "dinov2_vitl14",
+    "appearance_feature": "OpenGVLab/InternVideo2-Stage2_1B-224p-f4"
+  },
+  "evaluation": {
+    "prompts_per_task": 16,
+    "seeds": [
+      2
+    ],
+    "strengths": [
+      0,
+      0.25,
+      0.5,
+      0.75,
+      1
+    ],
+    "text_cfg": 4.5,
+    "inference_steps": 50,
+    "inference_width": 832,
+    "inference_height": 480,
+    "inference_frames": 41,
+    "inference_fps": 24,
+    "nominal_scale_range": [
+      0,
+      1
+    ],
+    "baseline": "same prompt, same seed, token off at scale zero",
+    "mask": "Released Wan cross-attention mask for 11 appearance sliders; speed uses the released global motion path and first-frame anchor in both cohort averages.",
+    "appearance_metrics": "author CR, Mono, CSM, LPIPS; CLIP and AlexNet LPIPS",
+    "motion_metrics": "Released speed/faster guidance and author CR, Mono, CSM and LPIPS using the same-seed zero-strength baseline, same as the corrected prior evaluation.",
+    "paper_table_2": {
+      "without_mask": {
+        "CR": 0.499,
+        "Mono": 0.57,
+        "CSM": 0.44,
+        "LPIPS": 0.298,
+        "Overall": 0.944
+      },
+      "with_mask": {
+        "CR": 0.46,
+        "Mono": 0.573,
+        "CSM": 0.386,
+        "LPIPS": 0.249,
+        "Overall": 0.982
+      }
+    },
+    "motion_wan_rgb_cfg_scales": [
+      0,
+      -0.25,
+      -0.5,
+      -0.75,
+      -1
+    ],
+    "paper_table_8_wan_all_layers": {
+      "CR": 0.5073,
+      "Mono": 0.5917,
+      "CSM": 0.2517,
+      "LPIPS": 0.094,
+      "Overall": 1.212
+    }
+  },
+  "decisions": {
+    "paper_fixed": [
+      "300 AdamW updates",
+      "1e-5 learning rate",
+      "320x176 supervision at 24 fps",
+      "32 supervised frames",
+      "appearance LPIPS weight 0.5",
+      "motion first-frame weight 5.0",
+      "K=4 high-noise refinement example",
+      "text CFG 4.5",
+      "edit strengths in [0,1]",
+      "16 held-out prompts with two seeds and five levels",
+      "Motion gamma 0.5 as explicitly recommended in D.3 / Table 10"
+    ],
+    "replication_choices": [
+      "Wan from appendix E.3, training input repeats final frame for Wan 4n+1 then discards that frame before both losses",
+      "Sigma >= 0.75, evenly spaced Euler refinement in sigma with stopped gradient and first x0 straight-through gradient",
+      "The public implementation learns slowdown at gamma 0.5 and uses negative rgb_cfg_scale for faster motion; [0,1] logical magnitudes map to [0,-0.25,-0.5,-0.75,-1] for this task.",
+      "Weight decay 0.01, float32 offset/Adam moments, BF16 frozen Wan",
+      "Four uniform strength increments for the stated range; original numerical mapping unavailable",
+      "61 evaluation frames chosen under the stated 64-frame limit, 480x832 and 50 steps from Wan implementation defaults, 24 fps fixed for this run",
+      "Fixed project seeds 0 and 1 for eval and use released plus separately authored held-out prompts; exact paper seeds and prompt list unknown",
+      "12-task equal mean is a subset comparison, not a reproduction of the Table 2 task distribution",
+      "200 desired unique clips per concept; minimum 100 appearance and 200 motion for this local protocol; original appearance clip counts not stated"
+    ]
+  },
+  "jobs": [
+    {
+      "id": "person_older",
+      "concept": "person",
+      "attribute": "older",
+      "label": "\u4eba\u7269\u66f4\u5e74\u957f",
+      "public_prompt_file": "evaluation/prompts/person.txt",
+      "evaluation_guidance": "evaluation/guidance/person/older.json",
+      "training_guidance": "configs/directions/person_older.json",
+      "target_words": [
+        "person",
+        "man",
+        "woman"
+      ],
+      "minimum_training_clips": 100
+    },
+    {
+      "id": "speed_higher_motion_magnitude",
+      "concept": "speed",
+      "attribute": "higher_motion_magnitude",
+      "label": "\u8fd0\u52a8\u5e45\u5ea6\u66f4\u5927",
+      "public_prompt_file": "evaluation/prompts/speed.txt",
+      "evaluation_guidance": null,
+      "training_guidance": null,
+      "target_words": [],
+      "minimum_training_clips": 200
+    },
+    {
+      "id": "aurora_brighter",
+      "concept": "aurora",
+      "attribute": "brighter",
+      "label": "\u6781\u5149\u66f4\u4eae",
+      "public_prompt_file": "evaluation/prompts/aurora.txt",
+      "evaluation_guidance": "evaluation/guidance/aurora/brighter.json",
+      "training_guidance": "evaluation/guidance/aurora/brighter.json",
+      "target_words": [
+        "aurora"
+      ],
+      "minimum_training_clips": 100
+    },
+    {
+      "id": "bubble_larger",
+      "concept": "bubble",
+      "attribute": "larger",
+      "label": "\u6c14\u6ce1\u66f4\u5927",
+      "public_prompt_file": "evaluation/prompts/bubble.txt",
+      "evaluation_guidance": "evaluation/guidance/bubble/larger.json",
+      "training_guidance": "evaluation/guidance/bubble/larger.json",
+      "target_words": [
+        "bubble"
+      ],
+      "minimum_training_clips": 100
+    },
+    {
+      "id": "campfire_bluer",
+      "concept": "campfire",
+      "attribute": "bluer",
+      "label": "\u8425\u706b\u706b\u7130\u66f4\u84dd",
+      "public_prompt_file": "evaluation/prompts/campfire.txt",
+      "evaluation_guidance": "evaluation/guidance/campfire/bluer.json",
+      "training_guidance": "evaluation/guidance/campfire/bluer.json",
+      "target_words": [
+        "campfire",
+        "fire",
+        "flame"
+      ],
+      "minimum_training_clips": 100
+    },
+    {
+      "id": "confetti_denser",
+      "concept": "confetti",
+      "attribute": "denser",
+      "label": "\u5f69\u7eb8\u5c51\u66f4\u5bc6\u96c6",
+      "public_prompt_file": "evaluation/prompts/confetti.txt",
+      "evaluation_guidance": "evaluation/guidance/confetti/denser.json",
+      "training_guidance": "evaluation/guidance/confetti/denser.json",
+      "target_words": [
+        "confetti"
+      ],
+      "minimum_training_clips": 100
+    },
+    {
+      "id": "explosion_smoky",
+      "concept": "explosion",
+      "attribute": "smoky",
+      "label": "\u7206\u70b8\u70df\u96fe\u66f4\u591a",
+      "public_prompt_file": "evaluation/prompts/fire_explosion.txt",
+      "evaluation_guidance": "evaluation/guidance/explosion/smoky.json",
+      "training_guidance": "evaluation/guidance/explosion/smoky.json",
+      "target_words": [
+        "explosion",
+        "blast"
+      ],
+      "minimum_training_clips": 100
+    },
+    {
+      "id": "ink_redder",
+      "concept": "ink",
+      "attribute": "redder",
+      "label": "\u58a8\u6c34\u66f4\u7ea2",
+      "public_prompt_file": "evaluation/prompts/ink.txt",
+      "evaluation_guidance": "evaluation/guidance/ink/redder.json",
+      "training_guidance": "evaluation/guidance/ink/redder.json",
+      "target_words": [
+        "ink"
+      ],
+      "minimum_training_clips": 100
+    },
+    {
+      "id": "smoke_thicker",
+      "concept": "smoke",
+      "attribute": "thicker",
+      "label": "\u70df\u96fe\u66f4\u6d53",
+      "public_prompt_file": "evaluation/prompts/smoke.txt",
+      "evaluation_guidance": "evaluation/guidance/smoke/thicker.json",
+      "training_guidance": "evaluation/guidance/smoke/thicker.json",
+      "target_words": [
+        "smoke"
+      ],
+      "minimum_training_clips": 100
+    },
+    {
+      "id": "snowflake_larger_particle",
+      "concept": "snowflake",
+      "attribute": "larger_particle",
+      "label": "\u96ea\u82b1\u9897\u7c92\u66f4\u5927",
+      "public_prompt_file": "evaluation/prompts/snowflake.txt",
+      "evaluation_guidance": "evaluation/guidance/snowflake/larger_particle.json",
+      "training_guidance": "evaluation/guidance/snowflake/larger_particle.json",
+      "target_words": [
+        "snowflake",
+        "snow"
+      ],
+      "minimum_training_clips": 100
+    },
+    {
+      "id": "spark_brighter",
+      "concept": "spark",
+      "attribute": "brighter",
+      "label": "\u706b\u82b1\u66f4\u4eae",
+      "public_prompt_file": "evaluation/prompts/spark.txt",
+      "evaluation_guidance": "evaluation/guidance/spark/brighter.json",
+      "training_guidance": "evaluation/guidance/spark/brighter.json",
+      "target_words": [
+        "spark"
+      ],
+      "minimum_training_clips": 100
+    },
+    {
+      "id": "water_splash_more_droplet",
+      "concept": "water_splash",
+      "attribute": "more_droplet",
+      "label": "\u6c34\u82b1\u98de\u6e85\u6db2\u6ef4\u66f4\u591a",
+      "public_prompt_file": "evaluation/prompts/water_splash.txt",
+      "evaluation_guidance": "evaluation/guidance/water_splash/more_droplet.json",
+      "training_guidance": "evaluation/guidance/water_splash/more_droplet.json",
+      "target_words": [
+        "water",
+        "splash"
+      ],
+      "minimum_training_clips": 100
+    }
+  ]
+}

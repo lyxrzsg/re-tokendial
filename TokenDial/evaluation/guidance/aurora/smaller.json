@@ -1,0 +1,19 @@
+{
+    "direction_prompts": [
+      "small aurora",
+      "very small aurora",
+      "tiny aurora",
+      "little aurora"
+    ],
+    "neg_direction_prompts": [
+      "large aurora",
+      "very large aurora",
+      "big aurora",
+      "huge aurora"
+    ],
+    "base_prompts": [
+      "aurora",
+      "northern lights",
+      "aurora in the sky"
+    ]
+  }

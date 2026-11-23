@@ -1,0 +1,19 @@
+{
+    "direction_prompts": [
+      "stable water splashes",
+      "very stable water splashes",
+      "calm water splashes",
+      "smooth water splashes"
+    ],
+    "neg_direction_prompts": [
+      "chaotic water splashes",
+      "intense water splashes",
+      "violent water splashes",
+      "wild water splashes"
+    ],
+    "base_prompts": [
+      "water splashes",
+      "water splash",
+      "splashing water"
+    ]
+  }

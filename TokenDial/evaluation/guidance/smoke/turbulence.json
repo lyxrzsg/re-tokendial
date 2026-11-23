@@ -1,0 +1,20 @@
+{
+    "direction_prompts": [
+      "turbulent smoke",
+      "very turbulent smoke",
+      "swirling smoke",
+      "very swirling smoke",
+      "chaotic smoke"
+    ],
+    "neg_direction_prompts": [
+      "smooth smoke",
+      "very smooth smoke",
+      "calm smoke",
+      "steady smoke"
+    ],
+    "base_prompts": [
+      "smoke",
+      "smoke plume",
+      "smoke in the air"
+    ]
+  }

@@ -1,0 +1,5 @@
+{
+    "direction_prompts": ["very dim aurora", "extremely dim aurora", "very dark aurora", "extremely dark aurora"],
+    "neg_direction_prompts": ["very bright aurora", "extremely bright aurora", "very luminous aurora", "extremely luminous aurora"],
+    "base_prompts": ["a video of an aurora"]
+}

@@ -1,0 +1,19 @@
+{
+    "direction_prompts": [
+      "dense bubbles",
+      "very dense bubbles",
+      "many bubbles",
+      "a lot of bubbles"
+    ],
+    "neg_direction_prompts": [
+      "sparse bubbles",
+      "very sparse bubbles",
+      "few bubbles",
+      "a few bubbles"
+    ],
+    "base_prompts": [
+      "bubbles",
+      "floating bubbles",
+      "bubbles in the air"
+    ]
+  }

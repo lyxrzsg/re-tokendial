@@ -1,0 +1,17 @@
+{
+    "direction_prompts": [
+      "purple aurora",
+      "more purple aurora",
+      "aurora with purple color",
+      "aurora with purple lights"
+    ],
+    "neg_direction_prompts": [
+      "aurora",
+      "aurora lights"
+    ],
+    "base_prompts": [
+      "aurora",
+      "northern lights",
+      "aurora in the sky"
+    ]
+  }

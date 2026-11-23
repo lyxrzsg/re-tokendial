@@ -1,0 +1,18 @@
+{
+    "direction_prompts": [
+      "bubbles popping quickly",
+      "bubbles bursting quickly",
+      "bubbles popping",
+      "bubbles bursting"
+    ],
+    "neg_direction_prompts": [
+      "long-lasting bubbles",
+      "persistent bubbles",
+      "bubbles staying unbroken"
+    ],
+    "base_prompts": [
+      "bubbles",
+      "floating bubbles",
+      "bubble particles"
+    ]
+  }

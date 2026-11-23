@@ -1,0 +1,18 @@
+{
+    "direction_prompts": [
+      "thick ink",
+      "very thick ink",
+      "opaque ink"
+    ],
+    "neg_direction_prompts": [
+      "dilute ink",
+      "very dilute ink",
+      "light ink",
+      "transparent ink"
+    ],
+    "base_prompts": [
+      "ink",
+      "ink spreading",
+      "ink in water"
+    ]
+  }

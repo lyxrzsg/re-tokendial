@@ -1,0 +1,26 @@
+[
+  {
+    "source": "archive_audit/extracted/freeslider_metrics/freeslider_metrics/evaluate_sliders.py",
+    "vendored": "evaluate_sliders.py",
+    "sha256": "7c4ef7f968f49859d0649025f420f8915555d30a35a5a487fd363c72943a2bb7",
+    "modified": false
+  },
+  {
+    "source": "archive_audit/extracted/freeslider_metrics/freeslider_metrics/README_slider_evaluation.md",
+    "vendored": "README_slider_evaluation.md",
+    "sha256": "0f7e37a1dcfac2155bf493fe8519f50ad95197839f356380719c8395817dd6fa",
+    "modified": false
+  },
+  {
+    "source": "archive_audit/extracted/vlm_metrics/vlm_metrics/gemini_slider_video_eval.py",
+    "vendored": "gemini_slider_video_eval.py",
+    "sha256": "00a572c0fdfcfb388ffc22305862bc86798f5e7bf9552709526f570967d4f43d",
+    "modified": false
+  },
+  {
+    "source": "archive_audit/extracted/vlm_metrics/vlm_metrics/README.md",
+    "vendored": "README_vlm.md",
+    "sha256": "f5aa8b3d04865eafbc70494bb054df8db60ee1194eb06a1cc274981d4290bc24",
+    "modified": false
+  }
+]

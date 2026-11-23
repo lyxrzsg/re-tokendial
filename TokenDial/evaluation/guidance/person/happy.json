@@ -1,0 +1,21 @@
+{
+    "direction_prompts": [
+      "happy person",
+      "very happy person",
+      "happier person",
+      "happy people",
+      "smiling person"
+    ],
+    "neg_direction_prompts": [
+      "sad person",
+      "very sad person",
+      "unhappy person",
+      "sad people",
+      "crying person"
+    ],
+    "base_prompts": [
+      "a person",
+      "a human",
+      "a human being"
+    ]
+  }

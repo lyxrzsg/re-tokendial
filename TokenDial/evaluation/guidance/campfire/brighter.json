@@ -1,0 +1,5 @@
+{
+    "direction_prompts": ["very bright campfire", "extremely bright campfire", "very luminous campfire", "extremely luminous campfire"],
+    "neg_direction_prompts": ["very dim campfire", "extremely dim campfire", "very dark campfire", "extremely dark campfire"],
+    "base_prompts": ["a video of a campfire", "a video of a campfire burning", "a video of a campfire with flames"]
+}

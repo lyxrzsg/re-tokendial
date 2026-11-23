@@ -1,0 +1,15 @@
+{
+    "direction_prompts": [
+      "highly saturated colorful confetti",
+      "very bright, vivid confetti colors"
+    ],
+    "neg_direction_prompts": [
+      "low saturation confetti",
+      "washed-out confetti colors"
+    ],
+    "base_prompts": [
+      "a video of confetti falling",
+      "a video of confetti shower",
+      "a video of falling confetti"
+    ]
+  }

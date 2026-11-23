@@ -1,0 +1,19 @@
+{
+    "direction_prompts": [
+      "bright fireball explosion",
+      "very bright fireball explosion",
+      "fireball explosion with high brightness",
+      "intense bright fireball"
+    ],
+    "neg_direction_prompts": [
+      "dim fireball explosion",
+      "very dim fireball explosion",
+      "fireball explosion with low brightness",
+      "weak dim fireball"
+    ],
+    "base_prompts": [
+      "fire explosion",
+      "fireball explosion",
+      "explosion with fire"
+    ]
+  }

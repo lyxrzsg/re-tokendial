@@ -1,0 +1,16 @@
+{
+    "direction_prompts": [
+      "green ink",
+      "more green ink",
+      "ink with a green tint",
+      "greenish ink"
+    ],
+    "neg_direction_prompts": [
+      "ink"
+    ],
+    "base_prompts": [
+      "ink",
+      "ink spreading",
+      "ink in water"
+    ]
+  }

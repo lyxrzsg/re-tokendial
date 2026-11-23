@@ -1,0 +1,15 @@
+{
+    "direction_prompts": [
+      "faster speed",
+      "very fast speed",
+      "fast speed"
+    ],
+    "neg_direction_prompts": [
+      "slower speed",
+      "very slow speed",
+      "slow speed"
+    ],
+    "base_prompts": [
+      "a video"
+    ]
+  }

@@ -1,0 +1,20 @@
+{
+    "direction_prompts": [
+      "older person",
+      "very old person",
+      "elderly person",
+      "senior person",
+      "aged person"
+    ],
+    "neg_direction_prompts": [
+      "younger person",
+      "very young person",
+      "young person",
+      "teenager"
+    ],
+    "base_prompts": [
+      "a person",
+      "a human",
+      "a human being"
+    ]
+  }

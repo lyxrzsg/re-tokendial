@@ -1,0 +1,19 @@
+{
+    "direction_prompts": [
+      "chaotic confetti motion, swirling and tumbling",
+      "confetti flying around in turbulent air",
+      "confetti blowing strongly in random directions",
+      "wild, chaotic confetti swirling"
+    ],
+    "neg_direction_prompts": [
+      "stable confetti motion",
+      "confetti falling gently straight down",
+      "calm confetti drift",
+      "steady, smooth confetti fall"
+    ],
+    "base_prompts": [
+      "a video of confetti falling",
+      "a video of confetti shower",
+      "a video of falling confetti"
+    ]
+  }

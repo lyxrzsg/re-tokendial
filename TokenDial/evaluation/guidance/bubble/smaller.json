@@ -1,0 +1,19 @@
+{
+    "direction_prompts": [
+      "small bubbles",
+      "very small bubbles",
+      "tiny bubbles",
+      "micro bubbles"
+    ],
+    "neg_direction_prompts": [
+      "large bubbles",
+      "very large bubbles",
+      "big bubbles",
+      "huge bubbles"
+    ],
+    "base_prompts": [
+      "bubbles",
+      "bubble particles",
+      "floating bubbles"
+    ]
+  }

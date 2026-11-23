@@ -1,0 +1,101 @@
+video,source_file,source_url,license,source_sha256,start_seconds
+clip_00000.mp4,wan13b_collection_splash_pilot_000002,https://github.com/ariannaliu/TokenDial,Locally generated with Wan2.1-T2V-1.3B through the released TokenDial datagen,b48584eb59fe40bfc056d696c7e5b7675ad11d9efd148eaf437947d1dff37819,0.45
+clip_00001.mp4,pixabay:104572,https://huggingface.co/datasets/nkp37/OpenVid-1M,"OpenVid-1M dataset, CC BY 4.0 as published",938b152d8ce1529e6de5565b9f0b6b684a33d9e0d75cb54ca65d9317cf9fa1b0,0
+clip_00002.mp4,pixabay:105468,https://huggingface.co/datasets/nkp37/OpenVid-1M,"OpenVid-1M dataset, CC BY 4.0 as published",9bec67adc3531cb60bd9d6812b8d50074910f5c6cf7482f71252e5acf68c626f,0
+clip_00003.mp4,FEkLrawpnBg,https://www.youtube.com/watch,"ChronoMagic-Pro, CC BY 4.0, academic research",c7d630b1d97a527b353dc736059353a4e41c2f399f76fdf0276eef96835fee25,
+clip_00004.mp4,fkVfX2hUlc8,https://www.youtube.com/watch,"ChronoMagic-Pro, CC BY 4.0, academic research",f32c497be7a97e8fc2cd25dffbf7502f88b51062aa0cd14e175189cf84835d9f,
+clip_00005.mp4,pixabay:45705,https://huggingface.co/datasets/nkp37/OpenVid-1M,"OpenVid-1M dataset, CC BY 4.0 as published",d52c967723f7491a1c9ff6484668a0d0469c34ff8ec49f9ec5abe46fc1eb5506,0
+clip_00006.mp4,PgVPiZlZzLs,https://www.youtube.com/watch,"ChronoMagic-Pro, CC BY 4.0, academic research",7f3d2f283e957da5684e2cb0b6108960c4a3574160e555a0968511612d42dc51,
+clip_00007.mp4,ZfEcC7jlnnk,https://www.youtube.com/watch,"OpenVid-1M dataset, CC BY 4.0 as published",2f387ee9f634d33004dcb6cc652164b4e9d9933fa0cb4ea8077d07f90ef44587,0
+clip_00008.mp4,wan13b_collection_splash_pilot_000005,https://github.com/ariannaliu/TokenDial,Locally generated with Wan2.1-T2V-1.3B through the released TokenDial datagen,385fb5ef7830b251b5eefaca4945399dfb8834a398f51a051de8f388b158cab3,0.85
+clip_00009.mp4,pixabay:158453,https://huggingface.co/datasets/nkp37/OpenVid-1M,"OpenVid-1M dataset, CC BY 4.0 as published",0729a0894a732bb8e0108d3ac50f63da15ea9b19cb816cfd961f054fc4f3f4b3,0
+clip_00010.mp4,ilLr9mE9bJs,https://www.youtube.com/watch,"ChronoMagic-Pro, CC BY 4.0, academic research",8958115f897cfc8deccc6f8bf74c2455aa6cea28f083b7bf850db3c5ad7233e8,
+clip_00011.mp4,ZeK9xy6d8Es,https://www.youtube.com/watch,"ChronoMagic-Pro, CC BY 4.0, academic research",04b70c6b8e087fc3ce2386c4839208ad25b8b2dde86c1a083ebba60a3d759c79,
+clip_00012.mp4,pixabay:4725639,https://huggingface.co/datasets/nkp37/OpenVid-1M,"OpenVid-1M dataset, CC BY 4.0 as published",c280bc449aa26cda0440d53a75ca8ccbd51c27ce326ac95350e302a191a24d0c,0
+clip_00013.mp4,wan13b_collection_splash_pilot_000000,https://github.com/ariannaliu/TokenDial,Locally generated with Wan2.1-T2V-1.3B through the released TokenDial datagen,d9033c2c7950e6849b8052968aa6e21dc3fd97180fe3350d6508fc84483cca65,0.45
+clip_00014.mp4,pixabay:4725561,https://huggingface.co/datasets/nkp37/OpenVid-1M,"OpenVid-1M dataset, CC BY 4.0 as published",6055cb12fc8ba2c0901c1d2fb9d95a78151dc738e87d34322b90c9d9704076e1,0
+clip_00015.mp4,qiKzt9t50Kw,https://www.youtube.com/watch,"ChronoMagic-Pro, CC BY 4.0, academic research",2584dafc418a66cd50e14f77c54ffada1a27057bf8038bf015cd010d996aaa19,
+clip_00016.mp4,I7N9fsNltxQ,https://www.youtube.com/watch,"ChronoMagic-Pro, CC BY 4.0, academic research",40b6d2e147896fb10aeeb4dc5cc94389af24c4b4a1918ae5c75c6ca908642c09,
+clip_00017.mp4,pixabay:180701,https://huggingface.co/datasets/nkp37/OpenVid-1M,"OpenVid-1M dataset, CC BY 4.0 as published",15fcd3d08af59d1c5741ea4303c6d0a207d1c62a5a81ea6b2b75c00e5e048544,0
+clip_00018.mp4,CGmHugc41Z8,https://www.youtube.com/watch,"ChronoMagic-Pro, CC BY 4.0, academic research",bf6048e1d7ab48706cf209731bb7b68e131ff5c0ea1ce6b0d7c3bf08e2bd276d,
+clip_00019.mp4,s2sdDGj-ANE,https://www.youtube.com/watch,"OpenVid-1M dataset, CC BY 4.0 as published",1a0eea44cd07ffdb9c297cc9f4f526a4d763c02bc3c95f877187ce9a465648ea,0
+clip_00020.mp4,EEDc5gDPPdE,https://www.youtube.com/watch,"ChronoMagic-Pro, CC BY 4.0, academic research",d6119f25bd3d2dcdbd19f9f9a2c2b6cc1184c5c46c0239723cb557e09af9a6bc,
+clip_00021.mp4,WAb4t9mJ1rA,https://www.youtube.com/watch,"ChronoMagic-Pro, CC BY 4.0, academic research",6193fe906cb657e4dadf34635b120d03161ecf400381b4b6c99e5fcf79d9923f,
+clip_00022.mp4,YjhF6aCFbvg,https://www.youtube.com/watch,"ChronoMagic-Pro, CC BY 4.0, academic research",61193a13cb26f06c9634ccf5262eeaadc8b2cf6650405143eb5aad8ee0dbfc03,
+clip_00023.mp4,cpGGPuy3xSM,https://www.youtube.com/watch,"ChronoMagic-Pro, CC BY 4.0, academic research",2438913c07452a6c25b00a9a9679f4ebecbaf416038837c001873eaa525e7099,
+clip_00024.mp4,xuYJcIlPfw8,https://www.youtube.com/watch,"ChronoMagic-Pro, CC BY 4.0, academic research",dedcc4df033a3fd86d17373e6c79db57805ba2520fc1bb1dab81aa91a7de915c,
+clip_00025.mp4,pixabay:137002,https://huggingface.co/datasets/nkp37/OpenVid-1M,"OpenVid-1M dataset, CC BY 4.0 as published",4cad8cfe412af1d77aacee7a714fe06791c83f9448897c2b5b33182a78e6b2b3,0
+clip_00026.mp4,pixabay:10798,https://huggingface.co/datasets/nkp37/OpenVid-1M,"OpenVid-1M dataset, CC BY 4.0 as published",4d4042243b93c8032a3626d21df4918cbf04ddef1148f13fd9b67158a081d385,0
+clip_00027.mp4,n7puviXUsl0,https://www.youtube.com/watch,"ChronoMagic-Pro, CC BY 4.0, academic research",226ed7c779e4b2e99cda00f70f755f79103de340ad58c20bd5998920cf1f077f,
+clip_00028.mp4,wan13b_collection_splash_pilot_000007,https://github.com/ariannaliu/TokenDial,Locally generated with Wan2.1-T2V-1.3B through the released TokenDial datagen,c77f6c7af9fff319fe0283225bdc19a3b763f4fc1a7befc01e59a1ee4196fd38,1.0
+clip_00029.mp4,splashsplat:bowl_017,https://niko-creater.github.io/splashsplat-web/,CC BY 4.0,43d16d86f58608c3e9df4e68f4fc5da2c5765cb447f652b0607976bb18b1909e,0.45
+clip_00030.mp4,pixabay:183954,https://huggingface.co/datasets/nkp37/OpenVid-1M,"OpenVid-1M dataset, CC BY 4.0 as published",6ecf3452edc48d2897823f162c7b4b3c4997cfa6d45caa43e2039cc0da4a2573,0
+clip_00031.mp4,0q0oySL6irg,https://www.youtube.com/watch,"ChronoMagic-Pro, CC BY 4.0, academic research",a1fddee9955574f7147d06512d944c708f130c2289988688835aea6cbf7b69f3,
+clip_00032.mp4,pixabay:4664572,https://huggingface.co/datasets/nkp37/OpenVid-1M,"OpenVid-1M dataset, CC BY 4.0 as published",8a0dac9c5b6c2b030f7a87df8953eb983fc50778c050e6534b18a6b245868e12,0
+clip_00033.mp4,pixabay:46343,https://huggingface.co/datasets/nkp37/OpenVid-1M,"OpenVid-1M dataset, CC BY 4.0 as published",c69b042200873ce2a6825a1880091f9541b536ac2c26422746c56670471ae80c,0
+clip_00034.mp4,pixabay:170202,https://huggingface.co/datasets/nkp37/OpenVid-1M,"OpenVid-1M dataset, CC BY 4.0 as published",196b364d8461548e475a6074104f731163af2c4a8ccea9d0184664d3c74e0eef,0
+clip_00035.mp4,G_GKsWiiip0,https://www.youtube.com/watch,"OpenVid-1M dataset, CC BY 4.0 as published",48661c63f273a55f493cb407b564e80ce00866b91fb13edecd745942900760a4,0
+clip_00036.mp4,splashsplat:bowl_005,https://niko-creater.github.io/splashsplat-web/,CC BY 4.0,94e7f767f65eebc288d8510731b471fb85cb32fb346b08738ebbcadfaecffcf1,0.45
+clip_00037.mp4,wan13b_collection_splash_pilot_000008,https://github.com/ariannaliu/TokenDial,Locally generated with Wan2.1-T2V-1.3B through the released TokenDial datagen,7e58918af235231c99ab9033fecbad087fbcb6a34dd41e2000f14d7199715a5d,0.6
+clip_00038.mp4,pixabay:34091,https://huggingface.co/datasets/nkp37/OpenVid-1M,"OpenVid-1M dataset, CC BY 4.0 as published",a574813a1a825f2ed1109d00f6022ea13eb817cfe2b7d2ba07692b9d3a75d88d,0
+clip_00039.mp4,pixabay:16499,https://huggingface.co/datasets/nkp37/OpenVid-1M,"OpenVid-1M dataset, CC BY 4.0 as published",9402c120bd069fa422b3b3d79700e28b2fd0f40345ba8741f72931d3304b60a3,0
+clip_00040.mp4,wan13b_collection_splash_pilot_000004,https://github.com/ariannaliu/TokenDial,Locally generated with Wan2.1-T2V-1.3B through the released TokenDial datagen,f40f1e2f91b2ff4f679c53b3c7e10b337f72e6e6aeffa059443fc96f9e85de9d,1.25
+clip_00041.mp4,splashsplat:bowl_008,https://niko-creater.github.io/splashsplat-web/,CC BY 4.0,06df4ffd5e762503518c66771f4f1015df8824b89643d83d49e413798d5bffed,0.45
+clip_00042.mp4,pixabay:85337,https://huggingface.co/datasets/nkp37/OpenVid-1M,"OpenVid-1M dataset, CC BY 4.0 as published",174dd89725678153a3f26217d9665276dca336f89d13c58ab5d2fb46d51ea3c3,0
+clip_00043.mp4,D-qZFcCBwOY,https://www.youtube.com/watch,"OpenVid-1M dataset, CC BY 4.0 as published",396198364798ec3f7f8d5efc4911d2ad5fe0f9351a351258910a213bc12fbd6c,0
+clip_00044.mp4,OTNgmRqG8-4,https://www.youtube.com/watch,"OpenVid-1M dataset, CC BY 4.0 as published",ffee6ce1388c67db268ab84e779243c679d1f4993f1b61b125fda65a3373fc51,0
+clip_00045.mp4,pixabay:4809087,https://huggingface.co/datasets/nkp37/OpenVid-1M,"OpenVid-1M dataset, CC BY 4.0 as published",3585a9fb2f7bdc612ae993ce66ee45063df2bebd21ca15f06f99f9900ffc7cfd,0
+clip_00046.mp4,3KvH2GEXmDU,https://www.youtube.com/watch,"ChronoMagic-Pro, CC BY 4.0, academic research",581a547cdd49b9327fd1f368fb425edb568aa1f5733b1570b81bc8307ecdb8ce,
+clip_00047.mp4,4kntS8N1irw,https://www.youtube.com/watch,"ChronoMagic-Pro, CC BY 4.0, academic research",3a6afddf12d64210ac55bfa8bbd5b29654cfb79373052eb7abcad5074553224f,
+clip_00048.mp4,Xk-b8AxkXgg,https://www.youtube.com/watch,"OpenVid-1M dataset, CC BY 4.0 as published",e0d192bfaf2c14342efdab2b31863e7c55016083c831cf4b712d1d93c0726799,0
+clip_00049.mp4,5SfyScWKc10,https://www.youtube.com/watch,"ChronoMagic-Pro, CC BY 4.0, academic research",a0054eaf35caf52bfcfdf65233cb300bda336acda8ff6eb8fd3bcfb0ed33dbe6,
+clip_00050.mp4,openvid_96a5bef2b76599181e,https://huggingface.co/datasets/nkp37/OpenVid-1M,"OpenVid-1M dataset, CC BY 4.0 as published",75ea9c87e0abb68702c9d11365ed5b7c3f77789215d3256351ef0086103fabd6,0
+clip_00051.mp4,openvid_dc08d1dbfb1ddd341d,https://huggingface.co/datasets/nkp37/OpenVid-1M,"OpenVid-1M dataset, CC BY 4.0 as published",16c000a823c0638551f1d5a84730f36dd3bd5df13b6f852f4feb8caaf2380671,0
+clip_00052.mp4,pixabay:170111,https://huggingface.co/datasets/nkp37/OpenVid-1M,"OpenVid-1M dataset, CC BY 4.0 as published",1d5088df5eb81b29e4b137def490b3936a615a6237db820099e58f05e18f2970,0
+clip_00053.mp4,wan13b_collection_splash_pilot_000006,https://github.com/ariannaliu/TokenDial,Locally generated with Wan2.1-T2V-1.3B through the released TokenDial datagen,0c283b0bd89fa13f7dca70434ffe67dd091e2c00b21096c981ed05e2f47a7e55,0
+clip_00054.mp4,cx3dMrdbNOU,https://www.youtube.com/watch,"ChronoMagic-Pro, CC BY 4.0, academic research",90a57cc3f1fb0e829f35087cd60f963410875a8fed833573081ca8d1c5521c4d,
+clip_00055.mp4,dgh_8jSI_2M,https://www.youtube.com/watch,"ChronoMagic-Pro, CC BY 4.0, academic research",568fd36c611fe15e5f9d1bc97980e1af4f4feae223270ec6ce3918e2fd33b734,
+clip_00056.mp4,n44JdpoamdM,https://www.youtube.com/watch,"ChronoMagic-Pro, CC BY 4.0, academic research",6151290184175ece4e18e293f7fcc989f96c1dc6a4347a3d1f8fea92ffaf1a51,
+clip_00057.mp4,aaia0tiJYOA,https://www.youtube.com/watch,"OpenVid-1M dataset, CC BY 4.0 as published",d86926ecf808f6193d7aecd6819ab2ed7f0d43a37e1ecf1ae0971f5d4691e687,0
+clip_00058.mp4,pixabay:119042,https://huggingface.co/datasets/nkp37/OpenVid-1M,"OpenVid-1M dataset, CC BY 4.0 as published",e6bca712501964c00146ba0ad57df64bb50006d3bad3e361e9566e1e1702cc24,0
+clip_00059.mp4,RKloCn2i-k4,https://www.youtube.com/watch,"ChronoMagic-Pro, CC BY 4.0, academic research",10b10a82c8c40ea42294d1b0f963958ad750db220ca63fc1fef5b38bff78c072,
+clip_00060.mp4,ocAUrZ0fc3E,https://www.youtube.com/watch,"OpenVid-1M dataset, CC BY 4.0 as published",64df0c6c39e97d4c6d358bcca67a2e0c5a7f6f6372a8dd26ea23ecb1f1d99828,0
+clip_00061.mp4,ioF7KR7iiRk,https://www.youtube.com/watch,"ChronoMagic-Pro, CC BY 4.0, academic research",7431b738b9050d1323b39bc455078f9547f4a59f37fbe326b429c425de74dc87,
+clip_00062.mp4,pixabay:1066953,https://huggingface.co/datasets/nkp37/OpenVid-1M,"OpenVid-1M dataset, CC BY 4.0 as published",ec7c8209e031720796534f0ae114d3c37a07f684bda478a74a9bcd124d64b2ef,0
+clip_00063.mp4,Sll06Wwf9lg,https://www.youtube.com/watch,"OpenVid-1M dataset, CC BY 4.0 as published",f733f0b725fb8d4404ec28b9151b9f05e6cc96d2d2e3fbb31cc0b0e349834a3e,0
+clip_00064.mp4,8Z1eMy2FoX4,https://www.youtube.com/watch,"ChronoMagic-Pro, CC BY 4.0, academic research",96a07edf9ef7d2244fb6fa0b356996107f4041ce738cd3708d423eaa70393634,
+clip_00065.mp4,TBikbn5XJhg,https://www.youtube.com/watch,"ChronoMagic-Pro, CC BY 4.0, academic research",92e0b805b95dfd58323b72b48ba5926a4644951effcf1ec4d1cdec0439a2099f,
+clip_00066.mp4,Ql69VPmNgw4,https://www.youtube.com/watch,"ChronoMagic-Pro, CC BY 4.0, academic research",b2d5a46c9e7d69dbb074adac442727415fe725e83ff33115e44a20bec4e1eb9a,
+clip_00067.mp4,pixabay:170759,https://huggingface.co/datasets/nkp37/OpenVid-1M,"OpenVid-1M dataset, CC BY 4.0 as published",f5ae3fd4f27e83e51e061787161594d03e1bb5f4bb62618f7273a26aab005c15,0
+clip_00068.mp4,Kxa97rgxqfE,https://www.youtube.com/watch,"OpenVid-1M dataset, CC BY 4.0 as published",ca4d3d321a92274960bdeef4426e73a8fc5696216c4f9c17a1ca3a3640df701d,0
+clip_00069.mp4,x5z8RhTcd7I,https://www.youtube.com/watch,"ChronoMagic-Pro, CC BY 4.0, academic research",7778a3910aa29eb6ff4f4bf7ce7a80fcc06693076171740071ce073172d894da,
+clip_00070.mp4,pixabay:48174,https://huggingface.co/datasets/nkp37/OpenVid-1M,"OpenVid-1M dataset, CC BY 4.0 as published",a54ddc0d180695b262eb2a426cbc77d8edca50d51da83c00c801aded7194f56b,0
+clip_00071.mp4,CKcdf04DytI,https://www.youtube.com/watch,"ChronoMagic-Pro, CC BY 4.0, academic research",23899308189217f5ec0fdb4182dea7fa879d695f0ee4450898263c35a1684b76,
+clip_00072.mp4,pvNlkt-4sdg,https://www.youtube.com/watch,"OpenVid-1M dataset, CC BY 4.0 as published",e09b89594fa6b77938c2112ddd43382fdd675021e290cbe40de3584b07278afd,0
+clip_00073.mp4,pixabay:39983,https://huggingface.co/datasets/nkp37/OpenVid-1M,"OpenVid-1M dataset, CC BY 4.0 as published",a64675f314c88fbd1b7d8eab0793eaf9a500383e7eb15741e6cfa5b2e09148ad,0
+clip_00074.mp4,wan13b_collection_splash_pilot_000003,https://github.com/ariannaliu/TokenDial,Locally generated with Wan2.1-T2V-1.3B through the released TokenDial datagen,417600ad4cb196b5b564aacaba996405ef5634b73cda9e9bf44b393273b63108,1.3
+clip_00075.mp4,pixabay:183958,https://huggingface.co/datasets/nkp37/OpenVid-1M,"OpenVid-1M dataset, CC BY 4.0 as published",b9461eefd32f5f341b7b37ef85a679596d2c0fbf4cca7c2cd4e4e4b502f642c2,0
+clip_00076.mp4,dUSUCODZ8jM,https://www.youtube.com/watch,"OpenVid-1M dataset, CC BY 4.0 as published",ff950830d95a738321ff90f07fcaa3699efaa3609da0e0a3b850bdecb5be5da1,0
+clip_00077.mp4,pixabay:44765,https://huggingface.co/datasets/nkp37/OpenVid-1M,"OpenVid-1M dataset, CC BY 4.0 as published",e72d84c8f1d8067e2c163c12ed39c00cf3430d72b7e5c8d5636bac7687f8a0ac,0
+clip_00078.mp4,8bjX1KdWLkI,https://www.youtube.com/watch,"OpenVid-1M dataset, CC BY 4.0 as published",882a4ec42b97f9879bd7972b1bed168d3bab1da0405d5fe892e5d214879ff4f9,0
+clip_00079.mp4,xE8CEUMRZjU,https://www.youtube.com/watch,"ChronoMagic-Pro, CC BY 4.0, academic research",d81c9fbbe6dbc5acd75e631b246b610ba23cb6f0e0d66705150b343e0791817a,
+clip_00080.mp4,ONmRqJJKI-Q,https://www.youtube.com/watch,"ChronoMagic-Pro, CC BY 4.0, academic research",2fdf8e1142eea76c052c9f097ac4d04a6065ee4571624d2ed8392a32a3b430f6,
+clip_00081.mp4,pixabay:4237850,https://huggingface.co/datasets/nkp37/OpenVid-1M,"OpenVid-1M dataset, CC BY 4.0 as published",f70fe66f7f911eed59858a0971165c4b2c7bd0c50e9509b84a8739505aef0ab4,0
+clip_00082.mp4,wan13b_expansion_splash_expansion_000002,https://github.com/ariannaliu/TokenDial,Locally generated with Wan2.1-T2V-1.3B through the released TokenDial datagen,9fd3fd84f4072e2857f2bc3828bf21e2f52bd442d41c488b6a2b4e8efa3ae215,1.55
+clip_00083.mp4,wan13b_expansion_splash_expansion_000003,https://github.com/ariannaliu/TokenDial,Locally generated with Wan2.1-T2V-1.3B through the released TokenDial datagen,6ca25c2a2ab3e0c4bab12cfe15a6dfbb00ec808ce4c597139b7c9ba5c7843a59,0.5
+clip_00084.mp4,wan13b_expansion_splash_expansion_000004,https://github.com/ariannaliu/TokenDial,Locally generated with Wan2.1-T2V-1.3B through the released TokenDial datagen,4b789601fbf65be0ee981dee8a4614cdf6998211af7c8bf457dc63b80420f46f,0.6
+clip_00085.mp4,wan13b_expansion_splash_expansion_000007,https://github.com/ariannaliu/TokenDial,Locally generated with Wan2.1-T2V-1.3B through the released TokenDial datagen,193e7364ab6e541373e99bc383e1241e67fc6cf758ffb46ab3032c988fdf3f64,1.85
+clip_00086.mp4,wan13b_expansion_splash_expansion_000008,https://github.com/ariannaliu/TokenDial,Locally generated with Wan2.1-T2V-1.3B through the released TokenDial datagen,9b990a8b1a784ac0d842d6c2661fade6f1155e9f8d08af552537b3015bf3e652,0
+clip_00087.mp4,wan13b_expansion_splash_expansion_000010,https://github.com/ariannaliu/TokenDial,Locally generated with Wan2.1-T2V-1.3B through the released TokenDial datagen,309403d3e2fea40be96ab30204b290791e3b31d719e05a18b104782ad79eb964,0.55
+clip_00088.mp4,wan13b_expansion_splash_expansion_000011,https://github.com/ariannaliu/TokenDial,Locally generated with Wan2.1-T2V-1.3B through the released TokenDial datagen,a2b174b2b7211075bd8e13b1b3a8925b67bf7f170e1fa76436b165ab30980fb4,1.05
+clip_00089.mp4,wan13b_expansion_splash_expansion_000012,https://github.com/ariannaliu/TokenDial,Locally generated with Wan2.1-T2V-1.3B through the released TokenDial datagen,54b1e14837af99d295e4dbf90bd79a9b533fa3e8a0fa36fcace9af117af015a5,0.5
+clip_00090.mp4,wan13b_expansion_splash_expansion_000013,https://github.com/ariannaliu/TokenDial,Locally generated with Wan2.1-T2V-1.3B through the released TokenDial datagen,e5b726e1e966ccce72192227157e77e67c6f96a8ca75a64c8d86285105b02301,0.8
+clip_00091.mp4,wan13b_expansion_splash_expansion_000014,https://github.com/ariannaliu/TokenDial,Locally generated with Wan2.1-T2V-1.3B through the released TokenDial datagen,e11ad17be129c148cf82a9000b40b302804212c5ca59ebfbc443a97d3feb4097,1.2
+clip_00092.mp4,wan13b_expansion_splash_expansion_000015,https://github.com/ariannaliu/TokenDial,Locally generated with Wan2.1-T2V-1.3B through the released TokenDial datagen,f48e9257c409dc0a6d134c7ff50c20c99e8843554ed36affb99c865d91ca40ce,1.83
+clip_00093.mp4,wan13b_expansion_splash_expansion_000020,https://github.com/ariannaliu/TokenDial,Locally generated with Wan2.1-T2V-1.3B through the released TokenDial datagen,3857c99a3fc1027b0268f75e804ad16f3b40de1fc171ba6715eb97a6b23db25f,0
+clip_00094.mp4,wan13b_expansion_splash_expansion_000021,https://github.com/ariannaliu/TokenDial,Locally generated with Wan2.1-T2V-1.3B through the released TokenDial datagen,aa8ed3cdcfe483e84066abf508b109450c0f56224b760ab41915a0ed325a837b,1.0
+clip_00095.mp4,wan13b_expansion_splash_expansion_000023,https://github.com/ariannaliu/TokenDial,Locally generated with Wan2.1-T2V-1.3B through the released TokenDial datagen,9cb4122e8b0bba4eff247b87b4e9459f1e42cd0f6e518d39baf43b03a38bcbba,0.5
+clip_00096.mp4,wan13b_expansion_splash_expansion_000025,https://github.com/ariannaliu/TokenDial,Locally generated with Wan2.1-T2V-1.3B through the released TokenDial datagen,7ca16b33d3e649e0b96a1f120f5520d78a2e6bd4739f820cf6be69beb6a6a4c7,1.4
+clip_00097.mp4,wan13b_expansion_splash_expansion_000027,https://github.com/ariannaliu/TokenDial,Locally generated with Wan2.1-T2V-1.3B through the released TokenDial datagen,11c0eacf50da893f1d53281238e62b96e33f02749dc411f850aeef404de03e17,0.1
+clip_00098.mp4,wan13b_expansion_splash_expansion_000028,https://github.com/ariannaliu/TokenDial,Locally generated with Wan2.1-T2V-1.3B through the released TokenDial datagen,3822cde7c3e194a7006f000a26f66954b9fa4baed349ec96b9131f0c3ccb79e2,0.35
+clip_00099.mp4,wan13b_expansion_splash_expansion_000030,https://github.com/ariannaliu/TokenDial,Locally generated with Wan2.1-T2V-1.3B through the released TokenDial datagen,bf4aed7584bb09efa11386949cfae46a5086bf9c8e992540c8e8b741ed493595,0.1

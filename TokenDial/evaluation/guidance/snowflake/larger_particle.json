@@ -1,0 +1,19 @@
+{
+    "direction_prompts": [
+      "snow with very large snowflakes",
+      "snow with extremely large snowflakes",
+      "big fluffy snowflakes falling",
+      "huge snowflakes drifting down slowly"
+    ],
+    "neg_direction_prompts": [
+      "snow with very small snowflakes",
+      "snow with extremely tiny snowflakes",
+      "fine small snowflakes falling",
+      "tiny snow particles drifting down"
+    ],
+    "base_prompts": [
+      "falling snow",
+      "snowflakes falling",
+      "snowfall in the air"
+    ]
+  }

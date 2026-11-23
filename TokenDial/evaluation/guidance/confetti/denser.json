@@ -1,0 +1,18 @@
+{
+    "direction_prompts": [
+      "very dense confetti",
+      "extremely dense confetti shower",
+      "a thick confetti shower",
+      "a lot of confetti pieces filling the scene"
+    ],
+    "neg_direction_prompts": [
+      "very sparse confetti",
+      "only a few confetti pieces",
+      "rare confetti"
+    ],
+    "base_prompts": [
+      "a video of confetti falling",
+      "a video of confetti shower",
+      "a video of falling confetti"
+    ]
+  }

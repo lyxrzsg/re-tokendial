@@ -1,0 +1,19 @@
+{
+    "direction_prompts": [
+      "water splashes with no droplets",
+      "very few water droplets",
+      "very sparse water droplets"
+    ],
+    "neg_direction_prompts": [
+      "water splashes with more droplets",
+      "many water droplets",
+      "a lot of splash droplets",
+      "very dense water droplets",
+      "extremely dense water droplets"
+    ],
+    "base_prompts": [
+      "water splashes",
+      "water splash",
+      "splashing water"
+    ]
+  }

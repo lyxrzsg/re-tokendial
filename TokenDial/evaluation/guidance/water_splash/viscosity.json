@@ -1,0 +1,19 @@
+{
+    "direction_prompts": [
+      "very viscous water splashes",
+      "extremely viscous water splashes",
+      "very thick liquid splashes",
+      "thicker water splashes",
+      "sticky liquid splashes"
+    ],
+    "neg_direction_prompts": [
+      "thin water splashes",
+      "watery splashes",
+      "runny liquid splashes"
+    ],
+    "base_prompts": [
+      "water splashes",
+      "water splash",
+      "splashing water"
+    ]
+  }

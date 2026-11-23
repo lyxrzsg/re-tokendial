@@ -1,0 +1,24 @@
+{
+    "direction_prompts": [
+      "very small snowflake particles",
+      "extremely small snowflake particles",
+      "tiny snowflake particles",
+      "fine small snowflake particles",
+      "small powdery snowflake particles",
+      "micro snowflake particles"
+    ],
+    "neg_direction_prompts": [
+      "very large snowflake particles",
+      "extremely large snowflake particles",
+      "huge snowflake particles",
+      "big chunky snowflake particles",
+      "oversized snowflake particles",
+      "large fluffy snowflakes"
+    ],
+    "base_prompts": [
+      "snowflake particles",
+      "snowflakes falling",
+      "snow particles in the air",
+      "falling snow"
+    ]
+  }
