@@ -1,35 +1,31 @@
 # re-tokendial · Wan 训练、生成与评分
 
-## 最新实验 · 人物变老，1 条与 8 条训练视频
+## 最新实验 · 单视频训练「人物变老」
 
-两组都使用 Wan2.1-T2V-1.3B 和 TokenDial 的人物变老方向。固定初始化种子 `20261123`、AdamW、学习率 `5e-4`、相同学习率调度和 **24 次参数更新**。训练裁切设置为 832×480、17 帧。单视频组每轮重复同一条两次，共 12 轮。8 视频组每轮各使用一次，共 3 轮，并包含单视频组用过的那条。
+使用 Wan2.1-T2V-1.3B 和 TokenDial 的人物变老方向。固定初始化种子 `20261123`、AdamW 和学习率 `5e-4`。训练设置为 832×480、17 帧。同一条视频每轮使用两次，共 12 轮、24 次参数更新。
 
-训练素材的文件名、caption、原始来源及 SHA256 见 [训练清单](experiments/person_older/metadata.csv)。把与清单哈希匹配的预处理 MP4 放入同一目录。单视频组只需清单第一行所列的 `clip_00001.mp4`。环境和权重准备见下文，训练使用已分配的单张 CUDA GPU。
+[训练清单](experiments/person_older/metadata.csv) 记录 `clip_00001.mp4` 的 caption、来源和 SHA256。将哈希匹配的预处理视频放在 `CLIPS` 指向的目录。先按下文创建并激活 Conda 环境。
 
 ```bash
 export BASELINE_BERT=/models/bert-large-uncased
 export INTERNVIDEO_CKPT=/models/InternVideo2-stage2_1b-224p-f4.pt
 CLIPS=/data/tokendial/person_older
 
-for GROUP in single multi; do
-  python reproduce.py verify person_older --study "$GROUP" --clips "$CLIPS"
-  python reproduce.py train person_older --study "$GROUP" --clips "$CLIPS"
-  python reproduce.py generate person_older --study "$GROUP"
-  python reproduce.py score person_older --study "$GROUP"
-done
+python reproduce.py verify person_older --study single --clips "$CLIPS"
+python reproduce.py train person_older --study single --clips "$CLIPS"
+python reproduce.py generate person_older --study single
+python reproduce.py score person_older --study single
 ```
 
 | 阶段 | 输入 | 输出 |
 |---|---|---|
-| 训练 | 视频、caption 和外观训练权重 | `training/checkpoints/`、`step_loss.csv`、`loss_curve.json`、恢复断点 |
-| 推理 | 第 24 次更新的 checkpoint、冻结的 prompt | `unseen6/native/nomask/` 下 18 个 MP4，以及含每条视频哈希的 `manifest.json` |
-| 评测 | 推理清单、CLIP、AlexNet LPIPS 和人物变老 guidance | `metrics/metrics.csv`、`metrics/summary.json`、`alignment/alignment.json` |
+| 训练 | 视频、caption 和外观训练权重 | `training/checkpoints/`、`step_loss.csv`、`loss_curve.json` 和恢复断点 |
+| 推理 | 训练 checkpoint 和冻结的 prompt | `unseen6/native/nomask/` 下 18 个 MP4，以及含 SHA256 的 `manifest.json` |
+| 评测 | 生成清单、CLIP、AlexNet LPIPS 和人物变老 guidance | `metrics/metrics.csv`、`metrics/summary.json`、`alignment/alignment.json` |
 
-默认输出根目录为 `runs/person_older/matched/<single或multi>/`。已有 checkpoint 时可直接执行 `generate`，通过 `--checkpoint /path/to/weights.safetensors` 指定文件。默认 checkpoint 分别是 `training/checkpoints/epoch-11.safetensors` 和 `training/checkpoints/epoch-2.safetensors`，文件名从 0 开始。训练途中重跑同一命令会使用断点。更换 checkpoint 后需使用独立的 `--work` 目录。
+输出根目录为 `runs/person_older/matched/single/`。默认使用第 12 轮的 checkpoint `training/checkpoints/epoch-11.safetensors`，文件名从 0 开始。已有 checkpoint 时可直接用 `generate --checkpoint /path/to/weights.safetensors`，更换权重请使用独立的 `--work` 目录。训练中断后重跑相同命令可使用断点。
 
-[推理协议](experiments/person_older/protocol.json) 固定六条未参与训练的 prompt、seed 2、外观强度 0 / 1 / 3、无 mask、832×480、41 帧、24 fps、50 个采样步和文本 CFG 4.5。要复跑初次检查的原 caption 和咖啡馆 prompt，在生成和评分时都添加 `--prompt-set smoke`。早期单视频 checkpoint 可用 `--checkpoint` 指定 `epoch-1.safetensors`，并用独立工作目录存放结果。
-
-对比时按同一个场景和 seed 对齐两组 `metrics.csv`，确认各自的 `alignment.json` 通过，再比较 CR、Mono、CSM、LPIPS、Overall，并查看三档的年龄递进和人物身份。这里的六组对照使用三档和一个 seed，论文复现实验的五档协议见下文。
+[推理协议](experiments/person_older/protocol.json) 固定六条未见 prompt、seed 2、强度 0 / 1 / 3、无 mask、832×480、41 帧、24 fps、50 个采样步和文本 CFG 4.5。复跑原 caption 和咖啡馆的快速验证时，在生成和评分命令中都加 `--prompt-set smoke`。
 
 ## 原有 12 属性 Wan 复现实验
 

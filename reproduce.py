@@ -32,7 +32,7 @@ def main():
     parser.add_argument("--checkpoint", type=Path)
     parser.add_argument("--work", type=Path, default=ROOT / "runs")
     parser.add_argument("--arm", choices=["native", "author"], default="native")
-    parser.add_argument("--study", choices=["single", "multi"], help="Matched person_older experiment")
+    parser.add_argument("--study", choices=["single"], help="Single-video person_older experiment")
     parser.add_argument("--prompt-set", choices=["unseen6", "smoke"], default="unseen6")
     args = parser.parse_args()
     if args.study and (args.job != "person_older" or args.arm != "native"):
@@ -45,8 +45,7 @@ def main():
     if args.study:
         out = args.work.resolve() / args.job / "matched" / args.study
         weights = out / "training"
-        last_epoch = 11 if args.study == "single" else 2
-        ckpt = args.checkpoint.resolve() if args.checkpoint else weights / f"checkpoints/epoch-{last_epoch}.safetensors"
+        ckpt = args.checkpoint.resolve() if args.checkpoint else weights / "checkpoints/epoch-11.safetensors"
         meta = ROOT / "experiments/person_older/metadata.csv"
     env = os.environ.copy()
     env["PYTHONPATH"] = os.pathsep.join([str(ROOT / "training/overlay"), str(REPO), env.get("PYTHONPATH", "")])
@@ -56,8 +55,6 @@ def main():
         clips = args.clips.resolve()
         with meta.open(encoding="utf-8", newline="") as stream:
             rows = list(csv.DictReader(stream))
-        if args.study == "single":
-            rows = rows[:1]
         for row in rows:
             if digest(clips / row["video"]) != row["sha256"]:
                 raise ValueError("Training clip differs from the recorded input: " + row["video"])
@@ -70,7 +67,7 @@ def main():
         entry = RUN / "motion_entry.py" if motion else ROOT / "training/appearance_entry.py"
         config = "configs/motion.yaml" if motion else "configs/appearance.yaml"
         if args.study:
-            entry = ROOT / "training/person_matched_entry.py"
+            entry = ROOT / "training/person_single_entry.py"
             out.mkdir(parents=True, exist_ok=True)
             study_meta = out / "training_metadata.csv"
             buffer = io.StringIO(newline="")
@@ -82,7 +79,6 @@ def main():
                 raise ValueError("Training manifest changed. Choose a fresh --work directory.")
             study_meta.write_bytes(payload)
             meta = study_meta
-            env["TOKENDIAL_PERSON_ARM"] = args.study
         cmd = [sys.executable, str(entry), "--config", config, "--dataset_base_path", str(clips),
                "--dataset_metadata_path", str(meta), "--output_path", str(weights)]
         if motion:
@@ -92,7 +88,7 @@ def main():
             cmd += ["--direction", job["training_guidance"], "--internvideo_pretrained_path",
                     str(Path(env["INTERNVIDEO_CKPT"]).resolve(strict=True))]
         if args.study:
-            cmd += ["--learning_rate", "0.0005", "--dataset_repeat", "2" if args.study == "single" else "1"]
+            cmd += ["--learning_rate", "0.0005", "--dataset_repeat", "2"]
     else:
         if args.study:
             out = out / args.prompt_set

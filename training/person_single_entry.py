@@ -1,4 +1,4 @@
-"""Run the matched 24-update person_older training with resumable checkpoints."""
+"""Run single-video person_older training with resumable checkpoints."""
 import csv
 import json
 import math
@@ -15,7 +15,7 @@ import diffsynth.diffusion as diffusion
 from feature_losses.internvideo2.configs.model import TextEncoders
 
 SEED = 20261123
-MATCHED_EPOCHS = {"single": 12, "multi": 3}
+TRAINING_EPOCHS = 12
 
 REL_TOL = 0.005
 ABS_TOL = 0.002
@@ -28,9 +28,6 @@ def save_json(path, obj):
 
 
 def train(accelerator, dataset, model, model_logger, args=None, **kwargs):
-    arm = os.environ["TOKENDIAL_PERSON_ARM"]
-    epochs = MATCHED_EPOCHS[arm]
-    expected = {"single": (1, 2), "multi": (8, 1)}[arm]
     if accelerator.num_processes != 1 or args.learning_rate != 5e-4:
         raise ValueError("The matched study uses one process and learning rate 5e-4")
     out = Path(model_logger.output_path)
@@ -60,7 +57,7 @@ def train(accelerator, dataset, model, model_logger, args=None, **kwargs):
         history, best, stale = state["history"], state["best"], state["stale"]
         if state["stop"]:
             save_json(out/"loss_curve.json", history)
-            save_json(out/"completed.json", dict(epochs=len(history),best_loss=best,updates=sum(row["updates"] for row in history), arm=arm))
+            save_json(out/"completed.json", dict(epochs=len(history),best_loss=best,updates=sum(row["updates"] for row in history), arm="single"))
             return
     step_state_file = out / "step_resume.pt"
     step_state = None
@@ -75,7 +72,7 @@ def train(accelerator, dataset, model, model_logger, args=None, **kwargs):
     assert accelerator.gradient_accumulation_steps == 1
     # Probe the identical clip/noise pairs at each epoch. These are training clips.
     unique = len(dataset) // args.dataset_repeat
-    if (unique, args.dataset_repeat) != expected or len(loader) * epochs != 24:
+    if unique != 1 or args.dataset_repeat != 2 or len(loader) != 2:
         raise ValueError("Unexpected dataset size or repetition count")
     indices = [0]
     def fixed_probe():
@@ -157,7 +154,7 @@ def train(accelerator, dataset, model, model_logger, args=None, **kwargs):
             history.append(dict(epoch=epoch+1,updates=len(losses),train_loss_mean=statistics.mean(losses),
                                 fixed_probe_mean=probe,fixed_probe_values=probes,stale_epochs=stale,
                                 token_rms=float(token.detach().float().square().mean().sqrt())))
-            stop = len(history) >= epochs
+            stop = len(history) >= TRAINING_EPOCHS
             tmp = state_file.with_suffix(".tmp")
             torch.save(dict(token=token.detach().cpu(),optimizer=optimizer.state_dict(),
                             scheduler=scheduler.state_dict(),cpu_rng=torch.get_rng_state(),
@@ -166,7 +163,7 @@ def train(accelerator, dataset, model, model_logger, args=None, **kwargs):
             save_json(out/"loss_curve.json",history)
             print(json.dumps(history[-1]),flush=True)
             if stop:
-                save_json(out/"completed.json",dict(epochs=len(history),best_loss=best,updates=sum(row["updates"] for row in history), arm=arm))
+                save_json(out/"completed.json",dict(epochs=len(history),best_loss=best,updates=sum(row["updates"] for row in history), arm="single"))
                 return
 
 
