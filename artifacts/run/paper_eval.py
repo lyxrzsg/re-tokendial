@@ -99,12 +99,22 @@ def main():
     p.add_argument("--out", required=True, type=Path)
     p.add_argument("--pilot", action="store_true")
     p.add_argument("--score-only", action="store_true")
+    p.add_argument("--study-protocol", type=Path)
+    p.add_argument("--prompt-set", default="unseen6")
     args = p.parse_args()
     root = Path(__file__).resolve().parent
     repo = root.parent.parent / "TokenDial"
     plan = json.loads((root / "plan.json").read_text())
     job = next(j for j in plan["jobs"] if j["id"] == args.job)
     settings = plan["evaluation"]
+    study = None
+    if args.study_protocol:
+        if args.pilot:
+            p.error("--study-protocol uses the full specified prompt set")
+        study = json.loads(args.study_protocol.read_text(encoding="utf-8"))
+        if study["job"] != args.job:
+            p.error("The protocol job must match --job")
+        settings = {**settings, **study["evaluation"]}
     motion = job["concept"] == "speed"
     out = args.out.resolve()
     manifest = out / "manifest.json"
@@ -114,13 +124,18 @@ def main():
         return
 
     from tokendial import inference
-    prompts_file = root / "held_out_prompts.json"
-    frozen = json.loads(prompts_file.read_text())[args.job]
-    prompts = frozen["released"] + frozen["local_supplement"]
-    if sha256(repo / frozen["public_file"]) != frozen["public_file_sha256"]:
-        raise ValueError("Released prompt file changed")
-    if not args.pilot and len(prompts) != settings["prompts_per_task"]:
-        raise ValueError("Wrong prompt count")
+    if study:
+        prompts_file = args.study_protocol
+        cases = study["prompt_sets"][args.prompt_set]
+        prompts = [case["prompt"] for case in cases]
+    else:
+        prompts_file = root / "held_out_prompts.json"
+        frozen = json.loads(prompts_file.read_text())[args.job]
+        prompts = frozen["released"] + frozen["local_supplement"]
+        if sha256(repo / frozen["public_file"]) != frozen["public_file_sha256"]:
+            raise ValueError("Released prompt file changed")
+        if not args.pilot and len(prompts) != settings["prompts_per_task"]:
+            raise ValueError("Wrong prompt count")
     ckpt = args.checkpoint.resolve()
     checkpoint_hash = sha256(ckpt)
     protocol_spec = json.loads((out.parent / "trained.json").read_text())
@@ -129,6 +144,8 @@ def main():
     out.mkdir(parents=True, exist_ok=True)
     status = dict(job=args.job, checkpoint=str(ckpt), checkpoint_sha256=checkpoint_hash,
                   prompts_sha256=sha256(prompts_file), plan_sha256=sha256(root / "plan.json"), pilot=args.pilot)
+    if study:
+        status["prompt_set"] = args.prompt_set
     protocol = out / "invocation.json"
     if protocol.is_file() and json.loads(protocol.read_text()) != status:
         raise ValueError("Output directory already contains results for a different invocation")
@@ -148,13 +165,13 @@ def main():
             return call_pipe(**kwargs)
 
     scales = settings["motion_wan_rgb_cfg_scales"] if motion else settings["strengths"]
-    modes = ["nomask", "mask"]
+    modes = ["nomask"] if study else ["nomask", "mask"]
     seeds = settings["seeds"][:1] if args.pilot else settings["seeds"]
     samples = []
     for index, prompt in enumerate(prompts):
         for seed in seeds:
             for mode in modes:
-                sample_id = f"prompt{index:02}_seed{seed}"
+                sample_id = f"{cases[index]['case']}_seed{seed}" if study else f"prompt{index:02}_seed{seed}"
                 folder = out / mode / sample_id
                 folder.mkdir(parents=True, exist_ok=True)
                 generation = dict(prompt=prompt, seed=seed, negative_prompt=inference.DEFAULT_NEGATIVE_PROMPT,

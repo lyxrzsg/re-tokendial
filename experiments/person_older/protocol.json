@@ -1,0 +1,57 @@
+{
+  "job": "person_older",
+  "evaluation": {
+    "seeds": [
+      2
+    ],
+    "strengths": [
+      0,
+      1,
+      3
+    ],
+    "text_cfg": 4.5,
+    "inference_steps": 50,
+    "inference_width": 832,
+    "inference_height": 480,
+    "inference_frames": 41,
+    "inference_fps": 24
+  },
+  "prompt_sets": {
+    "unseen6": [
+      {
+        "case": "newsroom",
+        "prompt": "A close-up of a woman with short dark hair speaking directly to the camera in a newsroom, her face evenly lit."
+      },
+      {
+        "case": "train_window",
+        "prompt": "A close-up of a man with curly brown hair looking out a train window, then turning slightly toward the camera."
+      },
+      {
+        "case": "kitchen",
+        "prompt": "A waist-up shot of a woman with dark braided hair in a blue apron stirring a bowl in a sunlit kitchen. She looks up and smiles."
+      },
+      {
+        "case": "bookshop",
+        "prompt": "A medium shot of a man with glasses in a green cardigan pulling a book from a shelf and reading its cover in a quiet bookshop."
+      },
+      {
+        "case": "garden",
+        "prompt": "A medium-wide shot of a woman with shoulder-length black hair in a yellow jacket walking slowly along a garden path toward the camera."
+      },
+      {
+        "case": "workshop",
+        "prompt": "A medium-wide shot of a bearded man in a denim shirt seated at a workbench, adjusting a desk lamp and looking at it from the side."
+      }
+    ],
+    "smoke": [
+      {
+        "case": "training_caption",
+        "prompt": "An adult person is shown speaking in a close-up."
+      },
+      {
+        "case": "cafe",
+        "prompt": "A close-up of a man in a grey sweater talking to a friend in a quiet cafe, his face clearly visible."
+      }
+    ]
+  }
+}
