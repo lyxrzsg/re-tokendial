@@ -4,12 +4,14 @@
 
 使用 Wan2.1-T2V-1.3B 和 TokenDial 的人物变老方向。固定初始化种子 `20261123`、AdamW 和学习率 `5e-4`。训练设置为 832×480、17 帧。同一条视频每轮使用两次，共 12 轮、24 次参数更新。
 
-[训练清单](experiments/person_older/metadata.csv) 记录 `clip_00001.mp4` 的 caption、来源和 SHA256。将哈希匹配的预处理视频放在 `CLIPS` 指向的目录。先按下文创建并激活 Conda 环境。
+仓库附带本次训练实际使用的 [预处理视频 clip_00001.mp4](experiments/person_older/clip_00001.mp4)。[训练清单](experiments/person_older/metadata.csv) 记录其 caption、来源和 SHA256。克隆仓库后，从仓库根目录运行下列命令。`verify` 会先检查视频哈希，训练直接读取仓库内的文件。请先按下文激活 Conda 环境，并准备 Wan、BERT 和 InternVideo2 权重。
+
+片段来自 [Soul-AILab 的 VividHead 数据集](https://huggingface.co/datasets/Soul-AILab/VividHead)（样本 `VividHead:1`）。这里提供从原素材 0.5 秒处开始裁剪的实验用预处理片段。数据集页面标注 [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)，并说明其用途为研究和非商业。
 
 ```bash
 export BASELINE_BERT=/models/bert-large-uncased
 export INTERNVIDEO_CKPT=/models/InternVideo2-stage2_1b-224p-f4.pt
-CLIPS=/data/tokendial/person_older
+CLIPS=experiments/person_older
 
 python reproduce.py verify person_older --study single --clips "$CLIPS"
 python reproduce.py train person_older --study single --clips "$CLIPS"
@@ -61,7 +63,7 @@ python reproduce.py --help
 Conda 实测覆盖了「人物变老」单视频组的 24 次训练更新、两条 prompt 各三档的生成，以及六条新视频的评分一致性检查。验证环境复用了服务器已核验的部分运行包。上面的命令给出新机器上的安装方式，完整的全新依赖下载过程尚未从头实测。历史运行依赖见 [runtime-versions.txt](training/runtime-versions.txt)。
 
 - 生成需要 Wan2.1-T2V-1.3B 的 DiT、UMT5、tokenizer 和 VAE 权重。可依照 [上游说明](TokenDial/README.md) 下载并缓存。四指标使用 `openai/clip-vit-base-patch32` 和 AlexNet LPIPS，离线环境需预先缓存。
-- 外观训练准备有权访问的 `InternVideo2-stage2_1b-224p-f4.pt` 与 `bert-large-uncased` 本地模型目录。运动训练准备 DINOv2 源码及 torch hub 的 `dinov2_vitl14_pretrain.pth` 缓存。权重和视频单独准备。
+- 外观训练准备有权访问的 `InternVideo2-stage2_1b-224p-f4.pt` 与 `bert-large-uncased` 本地模型目录。运动训练准备 DINOv2 源码及 torch hub 的 `dinov2_vitl14_pretrain.pth` 缓存。模型权重单独准备。原有 12 属性实验的训练视频按对应清单准备。
 - [datasets/](datasets/) 包含本轮 12 个属性的 CSV，每行给出文件名、训练字幕和视频 SHA256。同目录的 sources.csv 给出原素材标识、可用来源链接和裁剪起点。将相应的预处理 MP4 放入同一个属性目录。精确复跑训练需要与清单哈希一致的文件；如果只有 checkpoint，可直接从第 3 步开始。
 
 **2. 训练。** 以“人物变老”为例。将下列绝对路径换为实际位置。
