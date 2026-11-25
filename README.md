@@ -49,12 +49,20 @@ done
 
 以下命令在仓库根目录用 Linux Bash 执行。单机入口适用于已分配的 GPU。训练和生成使用 CUDA，四指标使用 CPU。服务器原有的独占卡调度代码保存在 `artifacts/run/`；单机入口可直接调用底层相同的生成、mask 和评分实现。
 
-**1. 准备运行环境与输入。** 本轮训练环境为 Python 3.10、PyTorch 2.8.0、torchvision 0.23.0。先安装与本机 CUDA 驱动兼容的 PyTorch，再安装项目依赖。服务器的版本记录见 [runtime-versions.txt](training/runtime-versions.txt)。
+**1. 创建 Conda 环境并准备输入。** 以下命令适用于 Linux。使用与驱动兼容的 PyTorch CUDA 构建，H20 验证使用 Python 3.10.19、PyTorch 2.8.0+cu128 和 torchvision 0.23.0+cu128。
 
 ```bash
-python -m pip install -e './TokenDial[train]' -r TokenDial/evaluation/requirements.txt
+conda env create -f environment.yml
+conda activate re-tokendial
+python -m pip install torch==2.8.0 torchvision==0.23.0 --index-url https://download.pytorch.org/whl/cu128
+python -m pip install -e ./TokenDial -r TokenDial/evaluation/requirements.txt \
+  timm==0.5.4 scipy huggingface-hub 'typing_extensions>=4.16'
 python reproduce.py --help
 ```
+
+外观训练需要 `timm==0.5.4`。上述安装方式使用评测依赖中的 `opencv-python-headless`，同一环境只装一种 OpenCV 包。Decord 0.6.0 在 Linux Python 3.10 上可能触发 `pip check` 的 wheel 标签告警。H20 验证用 Decord 抽帧检查了 18 条视频，均成功。
+
+Conda 实测覆盖了「人物变老」单视频组的 24 次训练更新、两条 prompt 各三档的生成，以及六条新视频的评分一致性检查。验证环境复用了服务器已核验的部分运行包。上面的命令给出新机器上的安装方式，完整的全新依赖下载过程尚未从头实测。历史运行依赖见 [runtime-versions.txt](training/runtime-versions.txt)。
 
 - 生成需要 Wan2.1-T2V-1.3B 的 DiT、UMT5、tokenizer 和 VAE 权重。可依照 [上游说明](TokenDial/README.md) 下载并缓存。四指标使用 `openai/clip-vit-base-patch32` 和 AlexNet LPIPS，离线环境需预先缓存。
 - 外观训练准备有权访问的 `InternVideo2-stage2_1b-224p-f4.pt` 与 `bert-large-uncased` 本地模型目录。运动训练准备 DINOv2 源码及 torch hub 的 `dinov2_vitl14_pretrain.pth` 缓存。权重和视频单独准备。
