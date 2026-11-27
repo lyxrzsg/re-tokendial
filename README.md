@@ -31,7 +31,32 @@ python reproduce.py score person_older --study single
 
 ## 原有 12 属性 Wan 复现实验
 
-本仓库整理了 2026 年 11 月这一轮 TokenDial **公开 Wan 实现**的复现实验。实验从 Table 7 的 12 个概念中各选一个属性，自训视觉 token 偏移权重，再用相同 prompt、seed 和五档强度生成视频。论文 Table 2 使用另一套主实验骨干，并汇总更多属性；这里可以复跑我们的 Wan 实验，并与论文报告值作参考对照。
+本仓库整理了 2026 年 11 月这一轮 TokenDial **公开 Wan 实现**的复现实验。实验从 Table 7 的 12 个概念中各选一个属性，自训视觉 token 偏移权重，再用相同 prompt、seed 和五档强度生成视频。论文未在 Table 2 主实验设置中明确给出骨干权重 ID，主表汇总范围也更广；这里可以复跑我们的 Wan 实验，并与论文报告值作参考对照。
+
+## Table 7 全属性评测（已有 T2V 视频）
+
+Table 7 逐项列出 **12 个概念、57 个属性方向**。本仓库的历史训练实验覆盖其中 12 个方向。全属性入口用于列清单和检查已有视频的覆盖，再调用现有四指标与作者对齐程序。每个新方向的训练数据、checkpoint 和实际注入强度需另行准备并记录。
+
+以下命令从仓库根目录开始，在上述 Conda 环境中执行。清单检查仅需 Python 标准库，可在本地运行。示例 seed 2、3 是复现选择；每个属性使用作者材料中对应的 8 条 prompt，每条两个 seed、五个逻辑档。§6 描述每属性 16 个基础视频，附录 C.2 描述 16 条 prompt 各用两个 seed，这里的 8×2 是明确选定的协议。[论文 §6、Table 7、附录 C.2](https://arxiv.org/pdf/2603.27520v2)
+
+```bash
+cd TokenDial
+python -m evaluation table7 --seeds 2 3 > table7_inventory.json
+```
+
+清单给出每项的概念、属性、manifest 用名、prompt 文件及可用的评分 guidance。仓库自带作者提供的 56 个 JSON。人物步态用 `person_walk.txt`，manifest 写 `concept=person_walk`、`attribute=walk_to_run`，论文概念仍为 person。评分前将 guidance 目录复制到工作目录，补入作者文件或注明来源的自拟版本。自拟时应分别报告原始 56 项子集和含补写项的 57 项结果。
+
+```bash
+cp -R evaluation/guidance ./guidance_full
+cp /path/to/walk_to_run.json ./guidance_full/person/walk_to_run.json
+python -m evaluation table7 --manifest /data/full/manifest.json --guidance-dir guidance_full --seeds 2 3
+python -m evaluation evaluate --manifest /data/full/manifest.json --guidance-dir guidance_full --out-dir /data/full/metrics --device cpu
+python -m evaluation align --manifest /data/full/manifest.json --guidance-dir guidance_full --metrics-csv /data/full/metrics/metrics.csv --out-dir /data/full/alignment --device cpu
+```
+
+按[评测清单格式](TokenDial/evaluation/README.md)准备一个 manifest。method 使用 `nomask`、`mask`；prompt 填对应文件中的整行，seed 填整数。每条轨迹记录逻辑档 0–4 及实际 model_scale，同一属性的两组须使用同一套实际强度。每组应有 912 条轨迹、4,560 个档位记录，零档文件可跨组共享。检查缺项或重复时命令以非零状态退出。评分后的 summary 按 method 汇总；先核对 alignment.json，再分别比较论文 Table 2 的两行。该清单检查本身不会训练、生成、计算分数或验证视觉编辑效果。
+
+
 
 ## 模块的输入和输出
 

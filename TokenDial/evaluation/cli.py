@@ -1,4 +1,5 @@
 import argparse
+from pathlib import Path
 import json
 from .manifest import load_manifest, load_guidance
 
@@ -19,6 +20,12 @@ def common(p):
 def main():
     p = argparse.ArgumentParser(description='TokenDial evaluation and author-code alignment')
     sub = p.add_subparsers(dest='command', required=True)
+    inventory = sub.add_parser('table7', help='List Table 7 tasks or check paired five-level coverage')
+    here = Path(__file__).resolve().parent
+    inventory.add_argument('--guidance-dir', default=here / 'guidance')
+    inventory.add_argument('--prompts-dir', default=here / 'prompts')
+    inventory.add_argument('--manifest', help='Check all paired mask/nomask trajectories')
+    inventory.add_argument('--seeds', nargs=2, type=int, required=True)
     v = sub.add_parser('validate')
     v.add_argument('--manifest', required=True)
     v.add_argument('--guidance-dir', required=True)
@@ -54,7 +61,12 @@ def main():
             p.error(f'{k} must be positive')
     if hasattr(args, 'max_frames') and args.max_frames < 0:
         p.error('max_frames must be >=0')
-    if args.command == 'adapt':
+    if args.command == 'table7':
+        from .table7 import inspect
+        if len(set(args.seeds)) != 2:
+            p.error('table7 requires two different seeds')
+        print(json.dumps(inspect(args), indent=2))
+    elif args.command == 'adapt':
         from .adapt import adapt
         adapt(args)
     elif args.command == 'validate':

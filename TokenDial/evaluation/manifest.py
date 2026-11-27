@@ -106,6 +106,8 @@ def sample_key(s):
 
 def load_guidance(root, s):
     path = Path(root) / s['concept'] / (s['attribute'] + '.json')
+    if s['concept'] == 'person_walk' and s['attribute'] == 'walk_to_run' and not path.exists():
+        path = Path(root) / 'person' / 'walk_to_run.json'
     obj = json.loads(path.read_text(encoding='utf-8'))
     for k in ['direction_prompts', 'neg_direction_prompts']:
         values = obj.get(k)
