@@ -1,0 +1,13 @@
+{
+  "direction_prompts": [
+    "a person running",
+    "a person jogging with a running gait"
+  ],
+  "neg_direction_prompts": [
+    "a person walking",
+    "a person strolling with a walking gait"
+  ],
+  "base_prompts": [
+    "a person moving on foot"
+  ]
+}

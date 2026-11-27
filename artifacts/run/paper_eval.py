@@ -64,15 +64,16 @@ def target_indices(original, pipe, prompt, words):
 
 def mask_target_words(job, prompt):
     words = job["target_words"]
-    if job["id"] == "ink_redder":
+    if job["concept"] == "ink":
         # Two released captions describe ink without a standalone 'ink' token.
         if prompt.startswith("Inky plume blooming in clear water"):
             return ["inky", "plume"]
         if prompt.startswith("Bold sumi-e brushstroke on textured rice paper"):
             return ["brushstroke"]
-    if job["id"] != "person_older":
+    if job["concept"] != "person":
         return words
-    subjects = (*words, "traveler", "child", "musician", "writer", "chef", "couple", "scientist")
+    subjects = (*words, "traveler", "child", "musician", "writer", "chef", "couple", "scientist",
+                "daughter", "mother", "feet", "boy", "student")
     matches = set(re.findall(r"[a-z]+", prompt.lower()))
     targets = [word for word in subjects if word in matches]
     if not targets:
@@ -99,13 +100,20 @@ def main():
     p.add_argument("--out", required=True, type=Path)
     p.add_argument("--pilot", action="store_true")
     p.add_argument("--score-only", action="store_true")
+    p.add_argument("--suite-task", type=Path)
     p.add_argument("--study-protocol", type=Path)
     p.add_argument("--prompt-set", default="unseen6")
     args = p.parse_args()
     root = Path(__file__).resolve().parent
     repo = root.parent.parent / "TokenDial"
     plan = json.loads((root / "plan.json").read_text())
-    job = next(j for j in plan["jobs"] if j["id"] == args.job)
+    task = json.loads(args.suite_task.read_text(encoding="utf-8")) if args.suite_task else None
+    if task:
+        if task["id"] != args.job or args.study_protocol or args.pilot or args.score_only:
+            p.error("--suite-task requires the matching job in full generation mode")
+        job = {**task, "target_words": task["targets"]}
+    else:
+        job = next(j for j in plan["jobs"] if j["id"] == args.job)
     settings = plan["evaluation"]
     study = None
     if args.study_protocol:
@@ -124,7 +132,10 @@ def main():
         return
 
     from tokendial import inference
-    if study:
+    if task:
+        prompts_file = args.suite_task
+        prompts = task["prompts"]
+    elif study:
         prompts_file = args.study_protocol
         cases = study["prompt_sets"][args.prompt_set]
         prompts = [case["prompt"] for case in cases]
@@ -138,9 +149,10 @@ def main():
             raise ValueError("Wrong prompt count")
     ckpt = args.checkpoint.resolve()
     checkpoint_hash = sha256(ckpt)
-    protocol_spec = json.loads((out.parent / "trained.json").read_text())
     assert not args.pilot
-    assert protocol_spec["weights"][out.name]["sha256"] == checkpoint_hash
+    if not task:
+        protocol_spec = json.loads((out.parent / "trained.json").read_text())
+        assert protocol_spec["weights"][out.name]["sha256"] == checkpoint_hash
     out.mkdir(parents=True, exist_ok=True)
     status = dict(job=args.job, checkpoint=str(ckpt), checkpoint_sha256=checkpoint_hash,
                   prompts_sha256=sha256(prompts_file), plan_sha256=sha256(root / "plan.json"), pilot=args.pilot)
@@ -167,6 +179,9 @@ def main():
     scales = settings["motion_wan_rgb_cfg_scales"] if motion else settings["strengths"]
     modes = ["nomask"] if study else ["nomask", "mask"]
     seeds = settings["seeds"][:1] if args.pilot else settings["seeds"]
+    if task:
+        scales = task["scales"]
+        seeds = task["seeds"]
     samples = []
     for index, prompt in enumerate(prompts):
         for seed in seeds:
@@ -206,7 +221,8 @@ def main():
                     valid_video(path, settings)
                     clips.append(dict(intensity=level, model_scale=scale, is_baseline=level == 0,
                                       video=str(path), sha256=sha256(path)))
-                samples.append(dict(method=mode, concept=job["concept"], attribute="faster" if motion else job["attribute"],
+                samples.append(dict(method=mode, concept=job.get("manifest_concept", job["concept"]),
+                                    attribute=job["attribute"] if task or not motion else "faster",
                                     sample=sample_id, prompt=prompt, seed=seed, checkpoint=str(ckpt),
                                     baseline_kind="zero_strength_t2v", clips=clips))
     write_json(manifest, {"schema_version": 1, "samples": samples})

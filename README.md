@@ -33,6 +33,45 @@ python reproduce.py score person_older --study single
 
 本仓库整理了 2026 年 11 月这一轮 TokenDial **公开 Wan 实现**的复现实验。实验从 Table 7 的 12 个概念中各选一个属性，自训视觉 token 偏移权重，再用相同 prompt、seed 和五档强度生成视频。论文未在 Table 2 主实验设置中明确给出骨干权重 ID，主表汇总范围也更广；这里可以复跑我们的 Wan 实验，并与论文报告值作参考对照。
 
+## 从训练到评分：12 项与 Table 7 全部 57 项
+
+在仓库根目录运行 `suite.py`。两套任务都依次执行素材校验、训练 Wan 的视觉 token、用本次训练权重生成五档 T2V 视频、按有／无 mask 计算 CR、Mono、CSM、LPIPS 和 Overall，最后与作者评分脚本逐轨迹对齐。下列命令供已配置 Conda 的 Linux GPU 主机使用。仅查看计划用标准库即可。
+
+| 参数 | 训练与控制方向 | 每属性的评测样本 | 两组共计 |
+|---|---|---|---|
+| `--suite 12` | 历史 12 个概念各选 1 项，各训练 1 个 checkpoint | 8 条作者 prompt 加 8 条历史补充 prompt，seed 2 | 384 条五档轨迹 |
+| `--suite 57` | Table 7 的 57 项。55 个文本语义方向分别训练，speed 的快／慢共用 1 个 DINOv2 运动 checkpoint，使用相反的注入方向 | 每组 8 条作者 prompt，默认 seed 2、3 | 1,824 条五档轨迹 |
+
+**准备训练输入。** 按下文创建 Conda 环境并缓存 Wan、CLIP、LPIPS 和 DINOv2 权重。令 `DATA` 指向含 12 个素材子目录的父目录，子目录名与仓库 `datasets/` 一致，例如 `$DATA/person_older/clip_00001.mp4`。每条记录含 `video,prompt,sha256`。默认使用仓库内的 metadata.csv；若子目录内有同名 CSV，采用该清单并校验每个视频哈希。全属性方案按概念共享原始视频与 caption，每个文本方向分别训练，建议为人物概念选用含清晰步态的素材。仓库附带的单视频实验片段只覆盖单视频示例。两个 suite 用各自的输出目录。
+
+```bash
+conda activate re-tokendial
+export BASELINE_BERT=/models/bert-large-uncased
+export INTERNVIDEO_CKPT=/models/InternVideo2-stage2_1b-224p-f4.pt
+export WAN_DINO_LOCAL=/models/dinov2
+DATA=/data/tokendial
+
+# 12 项：从训练开始，生成并评分
+python suite.py plan --suite 12
+python suite.py check --suite 12 --data-root "$DATA"
+python suite.py run --suite 12 --data-root "$DATA" --work runs/suite12
+```
+
+**全属性还需要步态方向文本。** 作者提供的 56 份 guidance 保存在原目录。`walk_to_run` 在此复现方案中采用 InternVideo2 文本对比监督“走→跑”，速度幅度任务采用 DINOv2。下面显式选用仓库提供的**复现组补写示例**作为步态训练和评分文本；若取得作者文件，请在复制步骤中换用它。该选择及 8×2 的采样口径均应在结果中说明。
+
+```bash
+mkdir -p runs
+cp -R TokenDial/evaluation/guidance runs/guidance57   # 首次创建此目录时执行
+cp training/walk_to_run.reproduction.json runs/guidance57/person/walk_to_run.json
+python suite.py plan --suite 57
+python suite.py check --suite 57 --data-root "$DATA" --guidance-dir runs/guidance57
+python suite.py run --suite 57 --data-root "$DATA" --guidance-dir runs/guidance57 --work runs/suite57
+```
+
+**训练与强度。** 默认复用下文 Wan 配置的两个 epoch，使用 `epoch-1.safetensors`。人物变老沿用仓库的训练方向配置，其他文本方向使用对应 guidance。五档默认沿用历史 12 项的强度幅值 0、0.25、0.5、0.75、1；speed/faster 用负向，speed/slower 用正向。两项运动均沿用全局运动路径，mask 组引用对应无 mask 视频。上述为本项目可运行的配置，57 项编辑效果与逐属性强度仍需实测。要复测扩大档位，在 `plan/check/run` 传同一份 `--scales-file scales.json`，例如 `{"campfire_bluer":[0,0.75,1.5,2.25,3]}`；键取自 plan 的 id。更换设置使用新的 work 目录。
+
+**输出与续跑。** `protocol.json` 保存任务、训练输入清单哈希、方向文本哈希和实际强度；`training/<方向>/` 保存权重，`generated/<任务>/` 保存每条视频、mask 记录和任务清单，根目录 `manifest.json` 合并所有轨迹。每次评分写入独立 `scores-*/`，内含逐样本 `metrics/metrics.csv`、按 mask 条件汇总的 `metrics/summary.json`、逐属性 `by_attribute.csv` 和 `alignment/alignment.json`。同协议重跑会核验已完成权重、复用已生成档位。若训练中断并留下未完成的权重目录，先将该目录移出，再重新运行以重新训练该方向。项目使用公开 Wan 骨干；分数应与 Table 2 的相应行作参考对照。
+
 ## Table 7 全属性评测（已有 T2V 视频）
 
 Table 7 逐项列出 **12 个概念、57 个属性方向**。本仓库的历史训练实验覆盖其中 12 个方向。全属性入口用于列清单和检查已有视频的覆盖，再调用现有四指标与作者对齐程序。每个新方向的训练数据、checkpoint 和实际注入强度需另行准备并记录。
